@@ -1,40 +1,75 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" type="image/x-icon"
-        href="favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <title>Ramos Lee | Rainy Season</title>
-  <link rel="stylesheet" href="./style.css">
-
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<!-- partial:index.partial.html -->
-<div id="jsi-rain-container" class="container">
-  <button class="btn" id="fullscr">Go Fullscreen</button>
 
-  <form class="search-form" method="get" action="javascript:void(0)" onsubmit="return searchGoogle(this)" target="_blank">
-      <input type="text" name="query" placeholder="Search Google or type a URL">
-      <button type="submit">Search</button>
-  </form>
-</div>
-<!-- partial -->
-  <script src='jquery.min.js'></script><script src="./script.js"></script>
+<body>
+  <!-- partial:index.partial.html -->
+  <div id="jsi-rain-container" class="container">
+
+    <button class="btn" id="fullscr">Go Fullscreen</button>
+
+    <div class="user-start">
+
+      <div class="mild-drizzle">
+        Let's Enjoy Mild Drizzle
+      </div>
+
+      <form class="search-form" method="get" action="javascript:void(0)" onsubmit="return searchGoogle(this)"
+        target="_blank">
+        <input type="text" name="query" placeholder="Search Google or type a URL">
+        <button type="submit">Search</button>
+      </form>
+
+      <div class="button-group">
+        <a href="https://www.gmail.com">
+          <div class="circle-button">
+            <i class="fas fa-envelope" style='font-size:44px;color:rgba(255,255,255,0.2)'></i>
+          </div>
+        </a>
+        <a href="https://github.com">
+          <div class="circle-button">
+            <i class='fab fa-github' style='font-size:48px;color:rgba(255,255,255,0.2)'></i>
+          </div>
+        </a>
+        <a href="https://web.skype.com/">
+          <div class="circle-button">
+            <i class='fab fa-skype' style='font-size:48px;color:rgba(255,255,255,0.2)'></i>
+          </div>
+        </a>
+        <a href="https://chatbot.theb.ai">
+          <div class="circle-button">
+            <i class="fa fa-question-circle" style='font-size:48px;color:rgba(255,255,255,0.2)'></i>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- partial -->
+  <script src='jquery.min.js'></script>
+  <script src="./script.js"></script>
   <script>
     let fullscreen;
-        let fsEnter = document.getElementById('fullscr');
-        fsEnter.addEventListener('click', function (e) {
-            e.preventDefault();
-            if (!fullscreen) {
-                fullscreen = true;
-                document.documentElement.requestFullscreen();
-                fsEnter.innerHTML = "Exit Fullscreen";
-            } else {
-                fullscreen = false;
-                document.exitFullscreen();
-                fsEnter.innerHTML = "Go Fullscreen";
-            }
-        });
+    let fsEnter = document.getElementById('fullscr');
+    fsEnter.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!fullscreen) {
+        fullscreen = true;
+        document.documentElement.requestFullscreen();
+        fsEnter.innerHTML = "Exit Fullscreen";
+      } else {
+        fullscreen = false;
+        document.exitFullscreen();
+        fsEnter.innerHTML = "Go Fullscreen";
+      }
+    });
 
     function searchGoogle(form) {
       var query = form.query.value;
@@ -48,4 +83,5 @@
   </script>
 
 </body>
+
 </html>
