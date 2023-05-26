@@ -13,8 +13,8 @@
 <div id="jsi-rain-container" class="container">
   <button class="btn" id="fullscr">Go Fullscreen</button>
 
-  <form class="search-form" action="https://google.com/search" method="get" target="_blank">
-      <input type="text" name="q" placeholder="Search Google or type a URL">
+  <form class="search-form" method="get" action="javascript:void(0)" onsubmit="return searchGoogle(this)" target="_blank">
+      <input type="text" name="query" placeholder="Search Google or type a URL">
       <button type="submit">Search</button>
   </form>
 </div>
@@ -35,6 +35,16 @@
                 fsEnter.innerHTML = "Go Fullscreen";
             }
         });
+
+    function searchGoogle(form) {
+      var query = form.query.value;
+      if (query) {
+        var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+        var newWindow = window.open(url, '_blank');
+        window.close();
+        return false;
+      }
+    }
   </script>
 
 </body>
