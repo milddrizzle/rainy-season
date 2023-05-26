@@ -1,4 +1,16 @@
-# rainy season
+# Rainy Season
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/K-T/pen/YVYvdW](https://codepen.io/K-T/pen/YVYvdW).
+MildDrizzle loves Rainy Season really.
 
+
+## Demo
+
+https://mild-rainy-season.web.app/
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/MildDrizzle/rainy-season
+```
