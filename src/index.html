@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon"
+        href="favicon.ico" />
+  <title>Ramos Lee | Rainy Season</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="jsi-rain-container" class="container">
+  <button class="btn" id="fullscr">Go Fullscreen</button>
+</div>
+<!-- partial -->
+  <script src='jquery.min.js'></script><script src="./script.js"></script>
+  <script>
+    let fullscreen;
+        let fsEnter = document.getElementById('fullscr');
+        fsEnter.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (!fullscreen) {
+                fullscreen = true;
+                document.documentElement.requestFullscreen();
+                fsEnter.innerHTML = "Exit Fullscreen";
+            } else {
+                fullscreen = false;
+                document.exitFullscreen();
+                fsEnter.innerHTML = "Go Fullscreen";
+            }
+        });
+  </script>
+
+</body>
+</html>
