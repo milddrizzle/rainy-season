@@ -125,6 +125,15 @@
       }
     });
 
+    document.addEventListener('click', function(event) {
+
+      if (!preResultsList.contains(event.target)){
+        preResultsList.innerHTML = '';
+        document.querySelector('.button-group').style.visibility = 'visible';
+        preResultsList.style.display = 'none';
+      }
+    });
+
   </script>
 
 </body>
