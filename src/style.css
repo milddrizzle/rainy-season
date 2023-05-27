@@ -51,7 +51,6 @@ svg {
 
 .search-form input[type="text"]::placeholder {
     color: #aaaaaa;
-    /* replace with your desired color */
 }
 
 .search-form button[type="submit"] {
@@ -119,6 +118,36 @@ svg {
     color: rgba(255,255,255,0.6);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     white-space: nowrap;
+}
+
+#pre-results {
+    position: absolute;
+    display: flex;
+    top: 5%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 168px;
+    margin-right: 93px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.4);
+    white-space: nowrap;
+    background-color: transparent;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 0 20px;
+    /* max-height: 200px; */
+    /* overflow-y: auto; */
+    display: none;
+    width: 400px;
+    border: none;
+    border-radius: 5px;
+    z-index: 11;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+li:hover {
+    color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 }
 
 .button-group {

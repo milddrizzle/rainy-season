@@ -6,7 +6,8 @@
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   <title>Ramos Lee | Rainy Season</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+    crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -23,9 +24,11 @@
 
       <form class="search-form" method="get" action="javascript:void(0)" onsubmit="return searchGoogle(this)"
         target="_blank">
-        <input type="text" name="query" placeholder="Search Google or type a URL">
+        <input type="text" name="query" placeholder="Search Google or type a URL" autocomplete="off">
         <button type="submit">Search</button>
       </form>
+
+      <ul id="pre-results"></ul>
 
       <div class="button-group">
         <a href="https://www.gmail.com">
@@ -80,6 +83,48 @@
         return false;
       }
     }
+
+    const searchBox = document.querySelector('.search-form input[type="text"]');
+    const preResultsList = document.querySelector('#pre-results');
+
+    searchBox.addEventListener('keyup', async () => {
+      preResultsList.innerHTML = '';
+
+      const query = searchBox.value;
+      const url = `https://cors-anywhere.herokuapp.com/https://www.google.com/complete/search?client=chrome&q=${query}&output=chrome`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(response);
+
+        if (data[1].length !== 0) {
+          document.querySelector('.button-group').style.visibility = 'hidden';
+          preResultsList.style.display = 'block';
+          preResultsList.innerHTML = "";
+          data[1].forEach((item) => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            li.addEventListener('click', () => {
+              var query = item;
+              if (query) {
+                var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+                var newWindow = window.open(url, '_blank');
+                window.close();
+                return false;
+              }
+            });
+            preResultsList.appendChild(li);
+          });
+        } else {
+          document.querySelector('.button-group').style.visibility = 'visible';
+          preResultsList.style.display = 'none';
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
   </script>
 
 </body>
