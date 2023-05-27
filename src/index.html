@@ -87,9 +87,6 @@
     const searchBox = document.querySelector('.search-form input[type="text"]');
     const preResultsList = document.querySelector('#pre-results');
 
-    searchBox.addEventListener('keyup', handleInput);
-    searchBox.addEventListener('click', handleInput);
-
     async function handleInput() {
       preResultsList.innerHTML = '';
 
@@ -127,6 +124,9 @@
         console.error(error);
       }
     }
+    
+    searchBox.addEventListener('keyup', handleInput);
+    searchBox.addEventListener('click', handleInput);
 
     document.addEventListener('click', function(event) {
 
