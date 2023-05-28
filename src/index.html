@@ -22,8 +22,7 @@
         Let's Enjoy Mild Drizzle!
       </div>
 
-      <form class="search-form" method="get" onsubmit="return searchGoogle(this)"
-        target="_blank">
+      <form class="search-form" method="get" onsubmit="return searchGoogle(this)" target="_blank">
         <input type="text" name="query" placeholder="Search Google or type a URL" autocomplete="off">
         <button type="submit">Search</button>
       </form>
@@ -56,10 +55,11 @@
 
   </div>
   <!-- partial -->
-  <script src='jquery.min.js'></script>
+  <script src='./jquery.min.js'></script>
   <script src="./script.js"></script>
   <script>
     let fullscreen;
+    let bestKey = "";
     let fsEnter = document.getElementById('fullscr');
     fsEnter.addEventListener('click', function (e) {
       e.preventDefault();
@@ -74,12 +74,17 @@
       }
     });
 
+    function isUrl(str) {
+      const regex = /^(ftp|http|https):\/\/[^ "]+$/;
+      return regex.test(str);
+    }
+
     function searchGoogle(form) {
       var query = form.query.value;
       if (query) {
-        var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-        var newWindow = window.open(url, '_blank');
-        window.close();
+        if (isUrl(bestKey)) {
+          location.href = bestKey;
+        } else location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
         return false;
       }
     }
@@ -88,15 +93,17 @@
     const preResultsList = document.querySelector('#pre-results');
 
     async function handleInput() {
-      preResultsList.innerHTML = '';
 
       const query = searchBox.value;
       const url = `https://cors-anywhere.herokuapp.com/https://www.google.com/complete/search?client=chrome&q=${query}&output=chrome`;
 
+      preResultsList.innerHTML = '';
+
       try {
         const response = await fetch(url);
         const data = await response.json();
-        console.log(response);
+
+        bestKey = data[1][0];
 
         if (data[1].length !== 0) {
           document.querySelector('.button-group').style.visibility = 'hidden';
@@ -108,9 +115,9 @@
             li.addEventListener('click', () => {
               var query = item;
               if (query) {
-                var url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-                var newWindow = window.open(url, '_blank');
-                window.close();
+                if (isUrl(bestKey)) {
+                  location.href = bestKey;
+                } else location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query);
                 return false;
               }
             });
@@ -124,13 +131,13 @@
         console.error(error);
       }
     }
-    
+
     searchBox.addEventListener('keyup', handleInput);
     searchBox.addEventListener('click', handleInput);
 
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
 
-      if (!preResultsList.contains(event.target)){
+      if (!preResultsList.contains(event.target)) {
         preResultsList.innerHTML = '';
         document.querySelector('.button-group').style.visibility = 'visible';
         preResultsList.style.display = 'none';
