@@ -5,7 +5,7 @@ MildDrizzle loves Rainy Season really.
 
 ## Demo
 
-https://mild-rainy-season.web.app/
+https://mild-drizzle-search.web.app/
 
 ## Run Locally
 
