@@ -1,0 +1,10 @@
+{
+    "name": "Mild Drizzle",
+    "version": "1.0.0",
+    "description": "Let's Enjoy Mild Drizzle!",
+    "manifest_version": 2,
+    "author": "Ramos Lee",
+    "chrome_url_overrides": {
+        "newtab": "src/index.html"
+      }
+}

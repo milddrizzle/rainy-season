@@ -173,6 +173,14 @@ li {
     padding: 10px;
 }
 
+.kevin {
+    transition: transform 0.5s ease;
+}
+
+.kevin:hover {
+    transform: scale(1.2);
+}
+
 .circle-button {
     height: 75px;
     width: 75px;
