@@ -1,6 +1,6 @@
 # Rainy Season
 
-MildDrizzle loves Rainy Season really.
+Mild Drizzle loves Rainy Season really.
 
 
 ## Demo
@@ -12,5 +12,5 @@ https://mild-drizzle-search.web.app/
 Clone the project
 
 ```bash
-  git clone https://github.com/MildDrizzle/rainy-season
+  git clone https://github.com/milddrizzle/rainy-season
 ```
